@@ -2,16 +2,29 @@
 <html>
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
-    <div>Choose coins info provider:</div>
-    <form>
-        <input type="radio" name="info_provider" id="radio-coinmarcetcap" value="CoinMarketCap">
-        <label for="html">CoinMarketCap</label><br>
-        <input type="radio" name="info_provider" id="radio-coingecko" value="CoinGecko">
-        <label for="html">CoinGecko</label><br>
-    </form>
+    <div class="extension-container">
+        <div class="header">Inline Crypto</div>
+        <div class="provider-container">
+            <div class="header-text">Choose coins info provider</div>
+            <form class="provider-form">
+                <div class="form-item">
+                    <input type="radio" name="info_provider" id="radio-coinmarcetcap" value="CoinMarketCap">
+                    <label for="html">CoinMarketCap</label><br>
+                </div>
+                <div class="form-item">
+                    <input type="radio" name="info_provider" id="radio-coingecko" value="CoinGecko">
+                    <label for="html">CoinGecko</label><br>
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="popup.js"></script>
 </body>
 
