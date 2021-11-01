@@ -1,0 +1,36 @@
+.provider-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.provider-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 1.6rem;
+    padding: 5px 0;
+}
+
+.provider-form input[type=radio]:hover {
+    cursor: pointer;
+}
+
+.form-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 4px 2px 2px 0;
+}
+
+.form-item input[type=radio] {
+    margin-right: 5px;
+}
+
+.header-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
