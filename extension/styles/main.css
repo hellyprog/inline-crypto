@@ -1,5 +1,8 @@
 :root {
-    --light-blue: blue;
+    --jewel: #1B7340;
+    --off-green: #F2FCF4;
+    --mirage: #1D1D35;
+    --oxley: #6F9B7B;
 }
 
 * {
@@ -9,6 +12,7 @@
 
 html {
     font-size: 10px;
+    color: var(--mirage);
     margin: 0;
     padding: 0;
     width: 320px;
@@ -23,12 +27,13 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    background-color: var(--off-green);
 }
 
 .header {
     font-size: 2rem;
     font-weight: bold;
-    background-color: var(--light-blue);
+    background-color: var(--jewel);
     color: white;
     padding: 10px;
     width: 100%;
