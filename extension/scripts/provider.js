@@ -12,7 +12,6 @@ function InitRadioEventListeners() {
         storeObject[infoProviderKey] = radio.value;
 
         chrome.storage.sync.set(storeObject, function(toggleOn) {
-            console.log(toggleOn);
             console.log(`Value is set to ${radio.value}`);
         });
     }));
@@ -20,6 +19,8 @@ function InitRadioEventListeners() {
 
 function getStorageValues() {
     chrome.storage.sync.get(infoProviderKey, function(obj) {
-        console.log(obj[infoProviderKey]);
+        let radioButtonId = obj[infoProviderKey] === 'CoinMarketCap' ? 'radio-coinmarketcap' : 'radio-coingecko';
+        let radioButton = document.getElementById(radioButtonId);
+        radioButton.checked = true;
     });
 }
