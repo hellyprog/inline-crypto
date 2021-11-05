@@ -6,3 +6,7 @@ chrome.runtime.onInstalled.addListener(() => {
         visible: false
     });
 });
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+    console.log(info.selectionText);
+});
