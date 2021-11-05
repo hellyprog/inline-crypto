@@ -1,4 +1,4 @@
-const infoProviderKey = 'info-provider';
+import { infoProviderKey, contextMenuId } from './constants.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     getStorageValues();
@@ -30,7 +30,7 @@ function getStorageValues() {
 }
 
 function updateContextMenu(titleProvider) {
-    chrome.contextMenus.update('inline-crypto-cm', {
+    chrome.contextMenus.update(contextMenuId, {
         title: 'Find %s info in ' + titleProvider,
         visible: true
     });
