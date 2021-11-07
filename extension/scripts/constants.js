@@ -1,7 +1,7 @@
-const infoProviderKey = 'info-provider';
+const popupConfigurationKey = 'popup-configuration';
 const contextMenuId = 'inline-crypto-cm';
 
 export {
-    infoProviderKey,
+    popupConfigurationKey,
     contextMenuId
 }

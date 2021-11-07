@@ -22,12 +22,12 @@
     padding: 4px 2px 2px 0;
 }
 
-.form-item input[type=radio]:hover,
+.form-item input[type=checkbox]:hover,
 .form-item label:hover {
     cursor: pointer;
 }
 
-.form-item input[type=radio] {
+.form-item input[type=checkbox] {
     margin-right: 5px;
 }
 

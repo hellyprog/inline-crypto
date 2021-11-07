@@ -1,37 +1,29 @@
-import { infoProviderKey, contextMenuId } from './constants.js';
+import { popupConfigurationKey, contextMenuId } from './constants.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    getStorageValues();
-    InitRadioEventListeners();
+    initRadioEventListeners();
 });
 
-function InitRadioEventListeners() {
-    let radios = document.querySelectorAll(`input[type=radio][name="${infoProviderKey}"]`);
-    radios.forEach(radio => radio.addEventListener('change', () => {
-        let storeObject = {};
-        storeObject[infoProviderKey] = radio.value;
+function initRadioEventListeners() {
+    let checkboxes = document.querySelectorAll(`input[type=checkbox]`);
+    checkboxes.forEach(checkbox => checkbox.addEventListener('change', () => {
+        chrome.storage.sync.get(popupConfigurationKey, result => {
+            let storeObject = result;
+            storeObject = storeObject ? storeObject : {};
+            storeObject[popupConfigurationKey] = {
+                ...storeObject[popupConfigurationKey],
+                [checkbox.name]: checkbox.checked
+            };
 
-        chrome.storage.sync.set(storeObject, () => {
-            console.log(`Value is set to ${radio.value}`);
-
-            updateContextMenu(radio.value);
+            setStorageData(storeObject);
         });
     }));
 }
 
-function getStorageValues() {
-    chrome.storage.sync.get(infoProviderKey, (obj) => {
-        let radioButtonId = obj[infoProviderKey] === 'CoinMarketCap' ? 'radio-coinmarketcap' : 'radio-coingecko';
-        let radioButton = document.getElementById(radioButtonId);
-        radioButton.checked = true;
-
-        updateContextMenu(obj[infoProviderKey]);
-    });
-}
-
-function updateContextMenu(titleProvider) {
-    chrome.contextMenus.update(contextMenuId, {
-        title: 'Find %s info in ' + titleProvider,
-        visible: true
+function setStorageData(data) {
+    chrome.storage.sync.set(data, () => {
+        if (chrome.runtime.lastError) {
+            console.log(chrome.runtime.lastError.message);
+        }
     });
 }
