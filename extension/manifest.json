@@ -9,5 +9,13 @@
     "permissions": ["storage", "contextMenus"],
     "action": {
         "default_popup": "popup.html"
-    }
+    },
+    "content_scripts": [{
+        "matches": ["https://*/*"],
+        "js": ["scripts/content-script.js"]
+    }],
+    "web_accessible_resources": [{
+        "resources": ["templates/info-popup.template.html"],
+        "matches": ["https://*/*"]
+    }]
 }
