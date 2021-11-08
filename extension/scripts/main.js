@@ -1,11 +1,12 @@
 import { popupConfigurationKey, contextMenuId } from './constants.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    assignStoredValue();
     initRadioEventListeners();
 });
 
 function initRadioEventListeners() {
-    let checkboxes = document.querySelectorAll(`input[type=checkbox]`);
+    let checkboxes = document.querySelectorAll('input[type=checkbox]');
     checkboxes.forEach(checkbox => checkbox.addEventListener('change', () => {
         chrome.storage.sync.get(popupConfigurationKey, result => {
             let storeObject = result;
@@ -18,6 +19,19 @@ function initRadioEventListeners() {
             setStorageData(storeObject);
         });
     }));
+}
+
+function assignStoredValue() {
+    chrome.storage.sync.get(popupConfigurationKey, result => {
+        console.log(result);
+        if (result[popupConfigurationKey]) {
+            Object.keys(result[popupConfigurationKey]).forEach((key) => {
+                console.log(key);
+                let checkbox = document.getElementById(key);
+                checkbox.checked = result[popupConfigurationKey][key];
+            });
+        }
+    });
 }
 
 function setStorageData(data) {
