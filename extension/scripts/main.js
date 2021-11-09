@@ -1,4 +1,4 @@
-import { popupConfigurationKey, contextMenuId } from './constants.js';
+import { popupConfigurationKey } from './constants.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     assignStoredValue();
