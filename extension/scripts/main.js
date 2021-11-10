@@ -23,7 +23,6 @@ function initRadioEventListeners() {
 
 function assignStoredValue() {
     chrome.storage.sync.get(popupConfigurationKey, result => {
-        console.log(result);
         if (result[popupConfigurationKey]) {
             Object.keys(result[popupConfigurationKey]).forEach((key) => {
                 console.log(key);

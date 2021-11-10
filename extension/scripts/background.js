@@ -7,5 +7,12 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-    console.log(browser.windows.get(tab.windowId));
+    chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        function: injectedFunction
+    });
 });
+
+function injectedFunction() {
+    document.body.style.backgroundColor = 'orange';
+}
