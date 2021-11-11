@@ -9,10 +9,6 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
-        function: injectedFunction
+        files: ['scripts/content-script.js']
     });
 });
-
-function injectedFunction() {
-    document.body.style.backgroundColor = 'orange';
-}

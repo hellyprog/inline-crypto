@@ -25,7 +25,6 @@ function assignStoredValue() {
     chrome.storage.sync.get(popupConfigurationKey, result => {
         if (result[popupConfigurationKey]) {
             Object.keys(result[popupConfigurationKey]).forEach((key) => {
-                console.log(key);
                 let checkbox = document.getElementById(key);
                 checkbox.checked = result[popupConfigurationKey][key];
             });
