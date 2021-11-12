@@ -11,4 +11,9 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         target: { tabId: tab.id },
         files: ['scripts/content-script.js']
     });
+
+    chrome.scripting.insertCSS({
+        target: { tabId: tab.id },
+        files: ['templates/info-popup.styles.css']
+    });
 });
