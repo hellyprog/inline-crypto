@@ -1,7 +1,7 @@
 :root {
     --jewel: #1B7340;
     --off-green: #F2FCF4;
-    --mirage: #1D1D35;
+    --mirage: rgb(29, 29, 53);
     --oxley: #6F9B7B;
 }
 
@@ -9,14 +9,37 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: var(--mirage);
-    opacity: 50%;
+    background-color: rgba(29, 29, 53, 0.5);
     top: 0;
     left: 0;
 }
 
 #info-popup {
+    background-color: var(--off-green);
     position: fixed;
     left: 50%;
     top: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+}
+
+#main-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+#contracts-info {
+    display: flex;
+    flex-direction: column;
+}
+
+#socials-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-item {
+    padding: 5px;
 }
