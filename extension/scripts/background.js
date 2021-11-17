@@ -9,7 +9,7 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
-        files: ['scripts/content-script.js']
+        function: injectTemplates
     });
 
     chrome.scripting.insertCSS({
@@ -17,3 +17,15 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         files: ['templates/info-popup.styles.css']
     });
 });
+
+function injectTemplates() {
+    fetch(chrome.runtime.getURL('/templates/info-popup.template.html'))
+        .then(r => r.text())
+        .then(html => {
+            document.body.insertAdjacentHTML('beforeend', html);
+
+            let script = document.createElement('script');
+            script.src = chrome.runtime.getURL('/templates/info-popup.js');
+            (document.head || document.documentElement).appendChild(script);
+        });
+}
