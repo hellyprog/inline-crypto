@@ -15,9 +15,10 @@
 }
 
 #info-popup {
+    font-size: 16px;
     background-color: var(--off-green);
     position: fixed;
-    left: 50%;
+    left: 75%;
     top: 50%;
     display: flex;
     flex-direction: column;
@@ -26,20 +27,27 @@
 }
 
 #main-info {
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
 #contracts-info {
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
 
 #socials-info {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .section-item {
     padding: 5px;
+}
+
+.section-item-bold {
+    font-weight: bold;
 }
