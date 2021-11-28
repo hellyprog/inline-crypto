@@ -23,9 +23,14 @@ function injectTemplates() {
         .then(r => r.text())
         .then(html => {
             document.body.insertAdjacentHTML('beforeend', html);
+            const scriptId = 'info-popup-script';
+            const scriptAlreadyExists = document.getElementById(scriptId);
 
-            let script = document.createElement('script');
-            script.src = chrome.runtime.getURL('/templates/info-popup.js');
-            (document.head || document.documentElement).appendChild(script);
+            if (!scriptAlreadyExists) {
+                let script = document.createElement('script');
+                script.id = scriptId;
+                script.src = chrome.runtime.getURL('/templates/info-popup.js');
+                (document.head || document.documentElement).appendChild(script);
+            }
         });
 }
