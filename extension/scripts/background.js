@@ -9,17 +9,17 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
+        files: ['scripts/content-script.js']
+    });
+
+    chrome.scripting.executeScript({
+        target: { tabId: tab.id },
         function: injectInfoPopupComponent
     });
 
     chrome.scripting.insertCSS({
         target: { tabId: tab.id },
         files: ['info-popup-component/info-popup.styles.css']
-    });
-
-    chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ['scripts/content-script.js']
     });
 });
 
