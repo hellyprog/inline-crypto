@@ -9,17 +9,22 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
-        function: injectTemplates
+        function: injectInfoPopupComponent
     });
 
     chrome.scripting.insertCSS({
         target: { tabId: tab.id },
-        files: ['templates/info-popup.styles.css']
+        files: ['info-popup-component/info-popup.styles.css']
+    });
+
+    chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['scripts/content-script.js']
     });
 });
 
-function injectTemplates() {
-    fetch(chrome.runtime.getURL('/templates/info-popup.template.html'))
+function injectInfoPopupComponent() {
+    fetch(chrome.runtime.getURL('/info-popup-component/info-popup.template.html'))
         .then(r => r.text())
         .then(html => {
             document.body.insertAdjacentHTML('beforeend', html);
@@ -29,7 +34,7 @@ function injectTemplates() {
             if (!scriptAlreadyExists) {
                 let script = document.createElement('script');
                 script.id = scriptId;
-                script.src = chrome.runtime.getURL('/templates/info-popup.js');
+                script.src = chrome.runtime.getURL('/info-popup-component/info-popup.js');
                 (document.head || document.documentElement).appendChild(script);
             }
         });

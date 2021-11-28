@@ -11,7 +11,7 @@
         "default_popup": "popup.html"
     },
     "web_accessible_resources": [{
-        "resources": ["templates/info-popup.template.html", "templates/info-popup.styles.css", "templates/info-popup.js"],
+        "resources": ["info-popup-component/info-popup.template.html", "info-popup-component/info-popup.styles.css", "info-popup-component/info-popup.js"],
         "matches": ["https://*/*"]
     }]
 }
