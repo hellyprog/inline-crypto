@@ -40,6 +40,10 @@
     flex-direction: column;
 }
 
+.contract-element {
+    cursor: pointer;
+}
+
 #socials-info {
     width: 100%;
     display: flex;
