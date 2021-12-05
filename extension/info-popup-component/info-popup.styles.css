@@ -44,6 +44,10 @@
     cursor: pointer;
 }
 
+.contract-element:hover {
+    text-decoration: underline;
+}
+
 #socials-info {
     width: 100%;
     display: flex;
