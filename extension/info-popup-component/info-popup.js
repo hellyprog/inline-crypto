@@ -1,6 +1,6 @@
 function copyContract(e) {
-    debugger;
-    var data = [new ClipboardItem({ "text/plain": new Blob([e.innerText], { type: "text/plain" }) })];
+    e.stopPropagation();
+    var data = [new ClipboardItem({ "text/plain": new Blob([e.target.innerText], { type: "text/plain" }) })];
     navigator.clipboard.write(data).then(function() {
         console.log("Copied to clipboard successfully!");
     }, function() {
