@@ -28,6 +28,8 @@ function injectInfoPopupComponent() {
         .then(r => r.text())
         .then(html => {
             document.body.insertAdjacentHTML('beforeend', html);
+
+            //add script
             const scriptId = 'info-popup-script';
             const scriptAlreadyExists = document.getElementById(scriptId);
 
@@ -36,6 +38,18 @@ function injectInfoPopupComponent() {
                 script.id = scriptId;
                 script.src = chrome.runtime.getURL('/info-popup-component/info-popup.js');
                 (document.head || document.documentElement).appendChild(script);
+            }
+
+            //add google icons url
+            const linkId = 'info-popup-link';
+            const linkAlreadyExists = document.getElementById(linkId);
+
+            if (!linkAlreadyExists) {
+                let link = document.createElement('link');
+                link.id = linkId;
+                link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
+                link.rel = 'stylesheet';
+                (document.head || document.documentElement).appendChild(link);
             }
         });
 }

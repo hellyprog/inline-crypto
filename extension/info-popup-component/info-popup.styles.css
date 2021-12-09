@@ -49,10 +49,8 @@
 
 .contract-element {
     cursor: pointer;
-}
-
-.contract-element:hover {
-    text-decoration: underline;
+    font-size: 16px !important;
+    padding: 0 5px;
 }
 
 #socials-info {
@@ -68,6 +66,12 @@
 
 .section-item {
     padding: 5px;
+}
+
+.section-item-block {
+    display: flex;
+    width: 100%;
+    align-items: center;
 }
 
 .section-item-bold {
