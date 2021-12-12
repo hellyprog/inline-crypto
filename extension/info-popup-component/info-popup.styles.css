@@ -56,7 +56,13 @@
 #socials-info {
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.socials-element {
+    cursor: pointer;
+    font-size: 16px !important;
+    padding: 0 5px;
 }
 
 .row-section {
